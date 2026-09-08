@@ -1,0 +1,108 @@
+/* The static surface list masks new cards before MutationObserver runs.
+   No image URL, accessible name, link, player, or page layout is replaced. */
+html[data-work-time-active="true"] :is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img), [data-work-time-thumbnail]):not(:is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img)) *):not(ytd-player *):not(#movie_player *):not(.player-container-background *) {
+  position: relative !important;
+  isolation: isolate;
+  background: #192521 !important;
+}
+
+/* Preserve native ::before: legacy YouTube uses it as an in-flow ratio spacer. */
+
+html[data-work-time-active="true"] :is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img), [data-work-time-thumbnail]):not(:is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img)) *):not(ytd-player *):not(#movie_player *):not(.player-container-background *)::after {
+  content: "WORK TIME";
+  background-color: #192521;
+  box-shadow: inset 0 0 0 1px rgb(190 218 203 / 8%);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
+  padding-top: 20px;
+  border-radius: inherit;
+  color: #bfcec4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.23em;
+  text-indent: 0.23em;
+  text-align: center;
+  /* Four quiet corners form a focus bracket above the wordmark. */
+  background-image:
+    linear-gradient(#7c9b8c, #7c9b8c), linear-gradient(#7c9b8c, #7c9b8c),
+    linear-gradient(#7c9b8c, #7c9b8c), linear-gradient(#7c9b8c, #7c9b8c),
+    linear-gradient(#7c9b8c, #7c9b8c), linear-gradient(#7c9b8c, #7c9b8c),
+    linear-gradient(#7c9b8c, #7c9b8c), linear-gradient(#7c9b8c, #7c9b8c);
+  background-size: 5px 1px, 1px 5px, 5px 1px, 1px 5px, 5px 1px, 1px 5px, 5px 1px, 1px 5px;
+  background-position:
+    calc(50% - 5px) calc(50% - 19px), calc(50% - 7px) calc(50% - 17px),
+    calc(50% + 5px) calc(50% - 19px), calc(50% + 7px) calc(50% - 17px),
+    calc(50% - 5px) calc(50% - 5px), calc(50% - 7px) calc(50% - 7px),
+    calc(50% + 5px) calc(50% - 5px), calc(50% + 7px) calc(50% - 7px);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Keep geometry, but do not allow animated thumbnails through the neutral card. */
+html[data-work-time-active="true"] :is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img), [data-work-time-thumbnail]):not(:is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img)) *):not(ytd-player *):not(#movie_player *):not(.player-container-background *) :is(img, video, canvas, yt-image, .ytThumbnailViewModelImage) {
+  opacity: 0 !important;
+}
+
+/* Duration stays above the card when the renderer exposes a separate badge. */
+html[data-work-time-active="true"] :is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img), [data-work-time-thumbnail]):not(:is(ytd-thumbnail, a#thumbnail, yt-thumbnail-view-model, .yt-thumbnail-view-model, .ytThumbnailViewModelHost,
+  .shortsLockupViewModelHostThumbnailContainer, .yt-shorts-lockup-view-model__thumbnail,
+  ytd-reel-item-renderer #thumbnail,
+  yt-shorts-lockup-view-model a[href*="/shorts/"]:has(img)) *):not(ytd-player *):not(#movie_player *):not(.player-container-background *) :is(ytd-thumbnail-overlay-time-status-renderer, .yt-badge-shape,
+  .yt-thumbnail-overlay-badge-view-model, .badge-shape-wiz) {
+  /* Keep the renderer's original position (legacy badges are absolute). */
+  z-index: 4 !important;
+}
+
+/* YouTube mounts hover previews outside the thumbnail in some desktop layouts. */
+html[data-work-time-active="true"] :is(ytd-video-preview, #video-preview):not(ytd-player *):not(#movie_player *):not(.player-container-background *) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Blur the whole recommendation metadata block, including channel avatars.
+   Hover anywhere on the card or focus any of its links to reveal the whole block.
+   No text, link, aria-label, or accessible name is changed. Nested scopes never double-blur. */
+html[data-work-time-active="true"][data-work-time-blur="true"]
+[data-work-time-details]:where(:not([data-work-time-details] *):not(ytd-watch-metadata *):not(#above-the-fold *):not(ytd-player *):not(#movie_player *)) {
+  filter: blur(6px);
+  transition: filter 140ms ease;
+}
+html[data-work-time-active="true"][data-work-time-blur="true"] :is(
+  ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer,
+  ytd-compact-video-renderer, ytd-playlist-video-renderer, ytd-reel-item-renderer,
+  yt-lockup-view-model, yt-shorts-lockup-view-model,
+  .yt-lockup-view-model, .yt-shorts-lockup-view-model,
+  .ytLockupViewModelHost, .shortsLockupViewModelHost
+):is(:hover, :focus-within) [data-work-time-details] {
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-work-time-active="true"] [data-work-time-details] { transition: none; }
+}

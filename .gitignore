@@ -1,0 +1,25 @@
+# Dependencies and generated distributions
+node_modules/
+dist/
+
+# Local test runs, browser profiles, diagnostic captures and reports
+validation/
+playwright-report/
+test-results/
+coverage/
+
+# Local credentials and machine-specific files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.crx
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/

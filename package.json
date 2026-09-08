@@ -1,0 +1,26 @@
+{
+  "name": "work-time-youtube",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Une extension Chrome pour un YouTube moins distrayant.",
+  "scripts": {
+    "test": "node --test tests/background.test.cjs tests/schedule.test.cjs",
+    "test:browser": "node tests/browser.cjs",
+    "screenshots": "node tools/capture.cjs",
+    "package": "node tools/package.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerr0o/YoutubeDistractionHider.git"
+  },
+  "homepage": "https://github.com/zerr0o/YoutubeDistractionHider#readme",
+  "bugs": {
+    "url": "https://github.com/zerr0o/YoutubeDistractionHider/issues"
+  }
+}
